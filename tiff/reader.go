@@ -275,8 +275,8 @@ func (d *decoder) decode(dst image.Image, xmin, ymin, xmax, ymax int) error {
 		} else {
 			img := dst.(*image.Gray)
 			max := uint32((1 << d.bpp) - 1)
-			for y := ymin; y < rMaxY; y++ {
-				for x := xmin; x < rMaxX; x++ {
+			for y := ymin; y < ymax; y++ {
+				for x := xmin; x < xmax; x++ {
 					v, ok := d.readBits(d.bpp)
 					if !ok {
 						return errNoPixels
